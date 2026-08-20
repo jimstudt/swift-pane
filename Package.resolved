@@ -1,0 +1,33 @@
+{
+  "originHash" : "a0a5033c2c7cc9731ba637aa27e8a28658d3c9c84e4cae71cabd6911b1aed1e5",
+  "pins" : [
+    {
+      "identity" : "swift-docc-plugin",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swiftlang/swift-docc-plugin",
+      "state" : {
+        "revision" : "647c708be89f834fa6a6d4945442793a77ddf5b6",
+        "version" : "1.5.0"
+      }
+    },
+    {
+      "identity" : "swift-docc-symbolkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swiftlang/swift-docc-symbolkit",
+      "state" : {
+        "revision" : "b45d1f2ed151d057b54504d653e0da5552844e34",
+        "version" : "1.0.0"
+      }
+    },
+    {
+      "identity" : "swift-glyph",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/jimstudt/swift-glyph.git",
+      "state" : {
+        "revision" : "cf9d80f1ced11815e12e49e5d399bec36572c34d",
+        "version" : "0.1.2"
+      }
+    }
+  ],
+  "version" : 3
+}

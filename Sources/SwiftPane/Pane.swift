@@ -16,7 +16,10 @@
 /// it borrows its labels' text, and the `~Escapable` types hold it to
 /// that lifecycle.
 public struct Pane<Root: Element & ~Escapable>: ~Escapable {
+    /// The element tree.
     public var root: Root
+    /// The frame size; ``layout(_:)`` hands it to ``root`` as tight
+    /// constraints.
     public let size: Size
     /// The glyph scratch bytes rendering this pane needs — the largest
     /// single-glyph bitmap any of its text can produce, gathered from
@@ -28,6 +31,7 @@ public struct Pane<Root: Element & ~Escapable>: ~Escapable {
     public private(set) var glyphScratchSize = 0
 
     @_lifetime(copy root)
+    /// Binds an element tree to a frame size.
     public init(size: Size, root: consuming Root) {
         self.size = size
         self.root = root

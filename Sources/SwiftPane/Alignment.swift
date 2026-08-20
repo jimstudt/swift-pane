@@ -1,5 +1,7 @@
 /// Horizontal placement, as used by ``Label`` and ``Alignment``.
 public enum HorizontalAlignment: Sendable, Equatable {
+    /// `leading`: at the left edge (LTR); `center`: centered;
+    /// `trailing`: at the right edge.
     case leading, center, trailing
 
     /// Offset of a `content`-wide thing inside a `container`-wide
@@ -15,6 +17,8 @@ public enum HorizontalAlignment: Sendable, Equatable {
 
 /// Vertical placement.
 public enum VerticalAlignment: Sendable, Equatable {
+    /// `top`: at the top edge; `center`: centered; `bottom`: at the
+    /// bottom edge.
     case top, center, bottom
 
     func offset(content: Int, in container: Int) -> Int {
@@ -28,7 +32,9 @@ public enum VerticalAlignment: Sendable, Equatable {
 
 /// A two-axis placement, as used by ``Align`` and ``Overlay``.
 public struct Alignment: Sendable, Equatable {
+    /// Placement along the x axis.
     public var horizontal: HorizontalAlignment
+    /// Placement along the y axis.
     public var vertical: VerticalAlignment
 
     public init(horizontal: HorizontalAlignment, vertical: VerticalAlignment) {
@@ -58,7 +64,10 @@ public enum CrossAlignment: Sendable, Equatable {
     /// Children keep their own cross size, packed to the start
     /// (top of a `Row`, leading edge of a `Column`).
     case start
+    /// Children are centered across the axis.
     case center
+    /// Children are packed to the end (bottom of a `Row`, trailing
+    /// edge of a `Column`).
     case end
     /// Children are forced to the container's full cross extent
     /// (when it is bounded).

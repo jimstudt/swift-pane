@@ -3,16 +3,19 @@
 
 /// Insets its child on all four sides.
 public struct Padding<Child: Element & ~Escapable>: Element, ~Escapable {
+    /// The space added around the child.
     public var insets: EdgeInsets
     var child: Child
 
     @_lifetime(copy child)
+    /// Insets `child` by `insets`.
     public init(_ insets: EdgeInsets, _ child: consuming Child) {
         self.insets = insets
         self.child = child
     }
 
     @_lifetime(copy child)
+    /// Insets `child` by `all` on every edge.
     public init(_ all: Int, _ child: consuming Child) {
         self.init(EdgeInsets(all), child)
     }
@@ -37,11 +40,13 @@ public struct Padding<Child: Element & ~Escapable>: Element, ~Escapable {
 /// Fills the available space (on bounded axes) and places its child
 /// within by alignment. The standard way to center something.
 public struct Align<Child: Element & ~Escapable>: Element, ~Escapable {
+    /// Where the child sits in the claimed space.
     public var alignment: Alignment
     var child: Child
     var childOffset = Point.zero
 
     @_lifetime(copy child)
+    /// Places `child` by `alignment` within the available space.
     public init(_ alignment: Alignment, _ child: consuming Child) {
         self.alignment = alignment
         self.child = child
@@ -71,11 +76,14 @@ public struct Align<Child: Element & ~Escapable>: Element, ~Escapable {
 /// incoming constraints). Without a child it is a rigid blank —
 /// a fixed gap, or the frame for an expanding ``Box``.
 public struct SizedBox<Child: Element & ~Escapable>: Element, ~Escapable {
+    /// The forced width, or `nil` to leave the axis to the child.
     public var width: Int?
+    /// The forced height, or `nil` to leave the axis to the child.
     public var height: Int?
     var child: Child
 
     @_lifetime(copy child)
+    /// Forces `child` to the given extents (tight constraints).
     public init(width: Int? = nil, height: Int? = nil, _ child: consuming Child) {
         self.width = width
         self.height = height
@@ -83,6 +91,7 @@ public struct SizedBox<Child: Element & ~Escapable>: Element, ~Escapable {
     }
 
     @_lifetime(immortal)
+    /// A rigid blank of the given extents.
     public init(width: Int? = nil, height: Int? = nil) where Child == EmptyElement {
         self.init(width: width, height: height, EmptyElement())
     }
@@ -108,6 +117,7 @@ public struct SizedBox<Child: Element & ~Escapable>: Element, ~Escapable {
 public struct Spacer: Element {
     public let flexFactor: Int
 
+    /// A spacer taking `flex` shares of leftover space.
     public init(flex: Int = 1) {
         precondition(flex > 0, "a spacer's flex must be positive")
         self.flexFactor = flex
@@ -129,6 +139,7 @@ public struct Flexible<Child: Element & ~Escapable>: Element, ~Escapable {
     var child: Child
 
     @_lifetime(copy child)
+    /// Gives `child` `flex` shares of the stack's main axis.
     public init(flex: Int = 1, _ child: consuming Child) {
         precondition(flex > 0, "flex must be positive")
         self.flexFactor = flex

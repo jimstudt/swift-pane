@@ -135,12 +135,16 @@ func renderChildren<L: ElementList & ~Escapable>(
 
 /// A horizontal stack: children laid left to right.
 public struct Row<Children: ElementList & ~Escapable>: Element, ~Escapable {
+    /// Pixels between adjacent children on the main axis.
     public var spacing: Int
+    /// How children sit across the axis.
     public var alignment: CrossAlignment
     var children: Children
     var frames: InlineArray<8, Rect>
 
     @_lifetime(copy children)
+    /// The designated initializer; the arity overloads in
+    /// ContainerInits.swift build `children` for you.
     public init(spacing: Int = 0, alignment: CrossAlignment = .start,
                 children: consuming Children) {
         self.spacing = spacing
@@ -168,12 +172,16 @@ public struct Row<Children: ElementList & ~Escapable>: Element, ~Escapable {
 
 /// A vertical stack: children laid top to bottom.
 public struct Column<Children: ElementList & ~Escapable>: Element, ~Escapable {
+    /// Pixels between adjacent children on the main axis.
     public var spacing: Int
+    /// How children sit across the axis.
     public var alignment: CrossAlignment
     var children: Children
     var frames: InlineArray<8, Rect>
 
     @_lifetime(copy children)
+    /// The designated initializer; the arity overloads in
+    /// ContainerInits.swift build `children` for you.
     public init(spacing: Int = 0, alignment: CrossAlignment = .start,
                 children: consuming Children) {
         self.spacing = spacing
@@ -202,11 +210,14 @@ public struct Column<Children: ElementList & ~Escapable>: Element, ~Escapable {
 /// A z-stack: children drawn in order (first is the bottom layer),
 /// each placed by `alignment` within the overlay's bounds.
 public struct Overlay<Children: ElementList & ~Escapable>: Element, ~Escapable {
+    /// Where each child sits within the overlay's bounds.
     public var alignment: Alignment
     var children: Children
     var frames: InlineArray<8, Rect>
 
     @_lifetime(copy children)
+    /// The designated initializer; the arity overloads in
+    /// ContainerInits.swift build `children` for you.
     public init(alignment: Alignment = .topLeading, children: consuming Children) {
         self.alignment = alignment
         self.children = children

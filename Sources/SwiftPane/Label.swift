@@ -16,15 +16,22 @@ import SwiftGlyph
 /// Glyph fallback: unmapped scalars and glyphs whose data is corrupt
 /// render as glyph 0, the font's tofu box.
 public struct Label: Element, ~Escapable {
+    /// The borrowed text.
     public var text: UTF8Span
+    /// The font, or `nil` to inherit ``Environment/font``.
     public var font: FontRef?
+    /// Pixel height, or `nil` to inherit ``Environment/textSize``.
     public var size: Double?
+    /// Text color, or `nil` to inherit ``Environment/textColor``.
     public var color: Color?
+    /// Where the text sits when the frame is wider than the text.
     public var alignment: HorizontalAlignment
     var cachedSize = Size.zero
     var contentWidth = 0.0
     var ascent = 0.0
 
+    /// A label borrowing `text`; `nil` styling inherits from the
+    /// ``Environment``.
     @_lifetime(copy text)
     public init(_ text: UTF8Span, font: FontRef? = nil, size: Double? = nil,
                 color: Color? = nil, alignment: HorizontalAlignment = .leading) {

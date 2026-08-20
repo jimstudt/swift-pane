@@ -11,8 +11,10 @@ import SwiftGlyph
 /// }
 /// ```
 public struct FontRef: Sendable, Equatable {
+    /// Position of the font in the environment's table.
     public var index: Int
 
+    /// References the font at `index` in the environment's table.
     public init(_ index: Int) {
         self.index = index
     }
@@ -35,6 +37,14 @@ public struct Environment: Copyable, ~Escapable {
     /// Default text color.
     public var textColor: Color
 
+    /// Creates a frame's environment.
+    ///
+    /// - Parameters:
+    ///   - fonts: The font table, borrowed for the frame; must not be
+    ///     empty. ``FontRef`` values index into it.
+    ///   - font: Default font for text that doesn't specify one.
+    ///   - textSize: Default text pixel height.
+    ///   - textColor: Default text color.
     @_lifetime(copy fonts)
     public init(fonts: consuming Span<Font>, font: FontRef = FontRef(0),
                 textSize: Double = 16, textColor: Color = .black) {

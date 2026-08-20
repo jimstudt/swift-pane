@@ -44,6 +44,7 @@ extension Element where Self: ~Escapable {
 /// The nothing element: occupies the constraints' minimum, draws
 /// nothing. The default child of ``Box`` and ``SizedBox``.
 public struct EmptyElement: Element {
+    /// Creates the nothing element.
     public init() {}
 
     public mutating func layout(in constraints: Constraints, _ env: borrowing Environment) -> Size {

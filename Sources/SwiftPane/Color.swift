@@ -6,11 +6,16 @@
 /// states, gauge gradients); the per-pixel hot path in ``Canvas``
 /// uses its own integer arithmetic.
 public struct Color: Sendable, Equatable {
+    /// Red, `0...255`.
     public var r: UInt8
+    /// Green, `0...255`.
     public var g: UInt8
+    /// Blue, `0...255`.
     public var b: UInt8
+    /// Straight (non-premultiplied) alpha; 255 is opaque.
     public var a: UInt8
 
+    /// Component-wise RGBA; alpha defaults to opaque.
     public init(r: UInt8, g: UInt8, b: UInt8, a: UInt8 = 255) {
         self.r = r
         self.g = g
@@ -46,10 +51,14 @@ public struct Color: Sendable, Equatable {
                   a: Color.unit(alpha))
     }
 
+    /// Fully transparent.
     public static let clear = Color(r: 0, g: 0, b: 0, a: 0)
+    /// Opaque black.
     public static let black = Color(r: 0, g: 0, b: 0)
+    /// Opaque white.
     public static let white = Color(r: 255, g: 255, b: 255)
 
+    /// True when compositing this color fully covers what's beneath.
     public var isOpaque: Bool { a == 255 }
 
     /// Source-over: `self` composited onto `dst`.

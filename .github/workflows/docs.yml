@@ -1,0 +1,56 @@
+name: Documentation
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: swift:6.3
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build DocC for static hosting
+        run: |
+          swift package --allow-writing-to-directory docs \
+            generate-documentation --target SwiftPane \
+            --disable-indexing \
+            --transform-for-static-hosting \
+            --hosting-base-path swift-pane \
+            --output-path docs
+      - name: Redirect site root to the package page
+        run: |
+          cat > docs/index.html <<'HTML'
+          <!DOCTYPE html>
+          <meta http-equiv="refresh" content="0; url=documentation/swiftpane/">
+          <a href="documentation/swiftpane/">SwiftPane documentation</a>
+          HTML
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+
+  # GitHub Pages isn't available on private repositories (on the Free
+  # plan), so deployment waits for the repo to go public; the build job
+  # above still validates the docs and keeps the artifact on every
+  # push. When the repo flips public: Settings → Pages → Source =
+  # "GitHub Actions", then re-run or push.
+  deploy:
+    if: ${{ !github.event.repository.private }}
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

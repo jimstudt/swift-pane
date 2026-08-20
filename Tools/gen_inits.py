@@ -38,7 +38,11 @@ def overload(container, k):
     else:
         lead_param = "spacing: Int = 0, alignment: CrossAlignment = .start"
         lead_args = "spacing: spacing, alignment: alignment"
+    noun = {"Row": "row", "Column": "column", "Overlay": "overlay"}[container]
+    doc = (f"/// A {noun} of one child." if k == 1
+           else f"/// A {noun} of {k} children, first to last.")
     return f"""\
+    {doc}
     @_lifetime({lifetimes})
     public init<{generics}>(
         {lead_param},

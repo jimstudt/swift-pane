@@ -25,15 +25,19 @@ public struct TextBuffer<let N: Int> {
     /// True once any append has been dropped for lack of space.
     public private(set) var overflowed: Bool
 
+    /// An empty buffer.
     public init() {
         storage = InlineArray(repeating: 0)
         count = 0
         overflowed = false
     }
 
+    /// True when no bytes have been appended.
     public var isEmpty: Bool { count == 0 }
+    /// The fixed capacity, `N` bytes.
     public var capacity: Int { N }
 
+    /// Empties the buffer and resets ``overflowed``.
     public mutating func clear() {
         count = 0
         overflowed = false

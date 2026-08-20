@@ -10,7 +10,8 @@ let package = Package(
         .library(name: "SwiftPane", targets: ["SwiftPane"]),
     ],
     dependencies: [
-        .package(path: "../swift-glyph"),
+        .package(url: "https://github.com/jimstudt/swift-glyph.git", from: "0.1.2"),
+        .package(url: "https://github.com/swiftlang/swift-docc-plugin", from: "1.4.0"),
     ],
     targets: [
         .target(

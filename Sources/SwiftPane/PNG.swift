@@ -12,7 +12,10 @@
 /// through the `sink` closure in stream order. Nothing is allocated;
 /// the IDAT staging buffer lives inline in the struct.
 public struct PNGStream {
+    /// Image width in pixels.
     public let width: Int
+    /// Image height in pixels — the number of ``writeRow(bgra:_:)``
+    /// calls ``finish(_:)`` expects.
     public let height: Int
 
     // Deflate bit accumulator (bits are appended LSB-first).
@@ -31,6 +34,7 @@ public struct PNGStream {
     private var crcTable: InlineArray<256, UInt32>
     private var rowsWritten: Int = 0
 
+    /// An encoder for one `width` × `height` image.
     public init(width: Int, height: Int) {
         precondition(width > 0 && height > 0, "PNG dimensions must be positive")
         self.width = width

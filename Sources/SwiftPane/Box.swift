@@ -10,16 +10,22 @@
 ///          Box(fill: barColor, cornerRadius: 5))
 /// ```
 public struct Box<Child: Element & ~Escapable>: Element, ~Escapable {
+    /// The interior color; `nil` fills nothing.
     public var fill: Color?
+    /// The border color; `nil` strokes nothing.
     public var border: Color?
+    /// Border thickness in pixels, drawn just inside the box's edge.
     public var borderWidth: Int
+    /// Corner radius in pixels; 0 is a square-cornered rectangle.
     public var cornerRadius: Int
+    /// Space between the box's edge and its child.
     public var padding: EdgeInsets
     var child: Child
     let expands: Bool
     var cachedSize = Size.zero
 
     @_lifetime(copy child)
+    /// A box decorating `child`: the box hugs the child plus `padding`.
     public init(fill: Color? = nil, border: Color? = nil, borderWidth: Int = 1,
                 cornerRadius: Int = 0, padding: EdgeInsets = .zero,
                 _ child: consuming Child) {

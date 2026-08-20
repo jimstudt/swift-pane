@@ -7,6 +7,7 @@
 
 
 extension Row where Children: ~Escapable {
+    /// A row of one child.
     @_lifetime(copy c0)
     public init<C0: Element & ~Escapable>(
         spacing: Int = 0, alignment: CrossAlignment = .start,
@@ -16,6 +17,7 @@ extension Row where Children: ~Escapable {
                   children: ElementPair(c0, EmptyList()))
     }
 
+    /// A row of 2 children, first to last.
     @_lifetime(copy c0, copy c1)
     public init<C0: Element & ~Escapable, C1: Element & ~Escapable>(
         spacing: Int = 0, alignment: CrossAlignment = .start,
@@ -25,6 +27,7 @@ extension Row where Children: ~Escapable {
                   children: ElementPair(c0, ElementPair(c1, EmptyList())))
     }
 
+    /// A row of 3 children, first to last.
     @_lifetime(copy c0, copy c1, copy c2)
     public init<C0: Element & ~Escapable, C1: Element & ~Escapable, C2: Element & ~Escapable>(
         spacing: Int = 0, alignment: CrossAlignment = .start,
@@ -34,6 +37,7 @@ extension Row where Children: ~Escapable {
                   children: ElementPair(c0, ElementPair(c1, ElementPair(c2, EmptyList()))))
     }
 
+    /// A row of 4 children, first to last.
     @_lifetime(copy c0, copy c1, copy c2, copy c3)
     public init<C0: Element & ~Escapable, C1: Element & ~Escapable, C2: Element & ~Escapable, C3: Element & ~Escapable>(
         spacing: Int = 0, alignment: CrossAlignment = .start,
@@ -43,6 +47,7 @@ extension Row where Children: ~Escapable {
                   children: ElementPair(c0, ElementPair(c1, ElementPair(c2, ElementPair(c3, EmptyList())))))
     }
 
+    /// A row of 5 children, first to last.
     @_lifetime(copy c0, copy c1, copy c2, copy c3, copy c4)
     public init<C0: Element & ~Escapable, C1: Element & ~Escapable, C2: Element & ~Escapable, C3: Element & ~Escapable, C4: Element & ~Escapable>(
         spacing: Int = 0, alignment: CrossAlignment = .start,
@@ -52,6 +57,7 @@ extension Row where Children: ~Escapable {
                   children: ElementPair(c0, ElementPair(c1, ElementPair(c2, ElementPair(c3, ElementPair(c4, EmptyList()))))))
     }
 
+    /// A row of 6 children, first to last.
     @_lifetime(copy c0, copy c1, copy c2, copy c3, copy c4, copy c5)
     public init<C0: Element & ~Escapable, C1: Element & ~Escapable, C2: Element & ~Escapable, C3: Element & ~Escapable, C4: Element & ~Escapable, C5: Element & ~Escapable>(
         spacing: Int = 0, alignment: CrossAlignment = .start,
@@ -61,6 +67,7 @@ extension Row where Children: ~Escapable {
                   children: ElementPair(c0, ElementPair(c1, ElementPair(c2, ElementPair(c3, ElementPair(c4, ElementPair(c5, EmptyList())))))))
     }
 
+    /// A row of 7 children, first to last.
     @_lifetime(copy c0, copy c1, copy c2, copy c3, copy c4, copy c5, copy c6)
     public init<C0: Element & ~Escapable, C1: Element & ~Escapable, C2: Element & ~Escapable, C3: Element & ~Escapable, C4: Element & ~Escapable, C5: Element & ~Escapable, C6: Element & ~Escapable>(
         spacing: Int = 0, alignment: CrossAlignment = .start,
@@ -70,6 +77,7 @@ extension Row where Children: ~Escapable {
                   children: ElementPair(c0, ElementPair(c1, ElementPair(c2, ElementPair(c3, ElementPair(c4, ElementPair(c5, ElementPair(c6, EmptyList()))))))))
     }
 
+    /// A row of 8 children, first to last.
     @_lifetime(copy c0, copy c1, copy c2, copy c3, copy c4, copy c5, copy c6, copy c7)
     public init<C0: Element & ~Escapable, C1: Element & ~Escapable, C2: Element & ~Escapable, C3: Element & ~Escapable, C4: Element & ~Escapable, C5: Element & ~Escapable, C6: Element & ~Escapable, C7: Element & ~Escapable>(
         spacing: Int = 0, alignment: CrossAlignment = .start,
@@ -81,6 +89,7 @@ extension Row where Children: ~Escapable {
 }
 
 extension Column where Children: ~Escapable {
+    /// A column of one child.
     @_lifetime(copy c0)
     public init<C0: Element & ~Escapable>(
         spacing: Int = 0, alignment: CrossAlignment = .start,
@@ -90,6 +99,7 @@ extension Column where Children: ~Escapable {
                   children: ElementPair(c0, EmptyList()))
     }
 
+    /// A column of 2 children, first to last.
     @_lifetime(copy c0, copy c1)
     public init<C0: Element & ~Escapable, C1: Element & ~Escapable>(
         spacing: Int = 0, alignment: CrossAlignment = .start,
@@ -99,6 +109,7 @@ extension Column where Children: ~Escapable {
                   children: ElementPair(c0, ElementPair(c1, EmptyList())))
     }
 
+    /// A column of 3 children, first to last.
     @_lifetime(copy c0, copy c1, copy c2)
     public init<C0: Element & ~Escapable, C1: Element & ~Escapable, C2: Element & ~Escapable>(
         spacing: Int = 0, alignment: CrossAlignment = .start,
@@ -108,6 +119,7 @@ extension Column where Children: ~Escapable {
                   children: ElementPair(c0, ElementPair(c1, ElementPair(c2, EmptyList()))))
     }
 
+    /// A column of 4 children, first to last.
     @_lifetime(copy c0, copy c1, copy c2, copy c3)
     public init<C0: Element & ~Escapable, C1: Element & ~Escapable, C2: Element & ~Escapable, C3: Element & ~Escapable>(
         spacing: Int = 0, alignment: CrossAlignment = .start,
@@ -117,6 +129,7 @@ extension Column where Children: ~Escapable {
                   children: ElementPair(c0, ElementPair(c1, ElementPair(c2, ElementPair(c3, EmptyList())))))
     }
 
+    /// A column of 5 children, first to last.
     @_lifetime(copy c0, copy c1, copy c2, copy c3, copy c4)
     public init<C0: Element & ~Escapable, C1: Element & ~Escapable, C2: Element & ~Escapable, C3: Element & ~Escapable, C4: Element & ~Escapable>(
         spacing: Int = 0, alignment: CrossAlignment = .start,
@@ -126,6 +139,7 @@ extension Column where Children: ~Escapable {
                   children: ElementPair(c0, ElementPair(c1, ElementPair(c2, ElementPair(c3, ElementPair(c4, EmptyList()))))))
     }
 
+    /// A column of 6 children, first to last.
     @_lifetime(copy c0, copy c1, copy c2, copy c3, copy c4, copy c5)
     public init<C0: Element & ~Escapable, C1: Element & ~Escapable, C2: Element & ~Escapable, C3: Element & ~Escapable, C4: Element & ~Escapable, C5: Element & ~Escapable>(
         spacing: Int = 0, alignment: CrossAlignment = .start,
@@ -135,6 +149,7 @@ extension Column where Children: ~Escapable {
                   children: ElementPair(c0, ElementPair(c1, ElementPair(c2, ElementPair(c3, ElementPair(c4, ElementPair(c5, EmptyList())))))))
     }
 
+    /// A column of 7 children, first to last.
     @_lifetime(copy c0, copy c1, copy c2, copy c3, copy c4, copy c5, copy c6)
     public init<C0: Element & ~Escapable, C1: Element & ~Escapable, C2: Element & ~Escapable, C3: Element & ~Escapable, C4: Element & ~Escapable, C5: Element & ~Escapable, C6: Element & ~Escapable>(
         spacing: Int = 0, alignment: CrossAlignment = .start,
@@ -144,6 +159,7 @@ extension Column where Children: ~Escapable {
                   children: ElementPair(c0, ElementPair(c1, ElementPair(c2, ElementPair(c3, ElementPair(c4, ElementPair(c5, ElementPair(c6, EmptyList()))))))))
     }
 
+    /// A column of 8 children, first to last.
     @_lifetime(copy c0, copy c1, copy c2, copy c3, copy c4, copy c5, copy c6, copy c7)
     public init<C0: Element & ~Escapable, C1: Element & ~Escapable, C2: Element & ~Escapable, C3: Element & ~Escapable, C4: Element & ~Escapable, C5: Element & ~Escapable, C6: Element & ~Escapable, C7: Element & ~Escapable>(
         spacing: Int = 0, alignment: CrossAlignment = .start,
@@ -155,6 +171,7 @@ extension Column where Children: ~Escapable {
 }
 
 extension Overlay where Children: ~Escapable {
+    /// A overlay of one child.
     @_lifetime(copy c0)
     public init<C0: Element & ~Escapable>(
         alignment: Alignment = .topLeading,
@@ -164,6 +181,7 @@ extension Overlay where Children: ~Escapable {
                   children: ElementPair(c0, EmptyList()))
     }
 
+    /// A overlay of 2 children, first to last.
     @_lifetime(copy c0, copy c1)
     public init<C0: Element & ~Escapable, C1: Element & ~Escapable>(
         alignment: Alignment = .topLeading,
@@ -173,6 +191,7 @@ extension Overlay where Children: ~Escapable {
                   children: ElementPair(c0, ElementPair(c1, EmptyList())))
     }
 
+    /// A overlay of 3 children, first to last.
     @_lifetime(copy c0, copy c1, copy c2)
     public init<C0: Element & ~Escapable, C1: Element & ~Escapable, C2: Element & ~Escapable>(
         alignment: Alignment = .topLeading,
@@ -182,6 +201,7 @@ extension Overlay where Children: ~Escapable {
                   children: ElementPair(c0, ElementPair(c1, ElementPair(c2, EmptyList()))))
     }
 
+    /// A overlay of 4 children, first to last.
     @_lifetime(copy c0, copy c1, copy c2, copy c3)
     public init<C0: Element & ~Escapable, C1: Element & ~Escapable, C2: Element & ~Escapable, C3: Element & ~Escapable>(
         alignment: Alignment = .topLeading,
@@ -191,6 +211,7 @@ extension Overlay where Children: ~Escapable {
                   children: ElementPair(c0, ElementPair(c1, ElementPair(c2, ElementPair(c3, EmptyList())))))
     }
 
+    /// A overlay of 5 children, first to last.
     @_lifetime(copy c0, copy c1, copy c2, copy c3, copy c4)
     public init<C0: Element & ~Escapable, C1: Element & ~Escapable, C2: Element & ~Escapable, C3: Element & ~Escapable, C4: Element & ~Escapable>(
         alignment: Alignment = .topLeading,
@@ -200,6 +221,7 @@ extension Overlay where Children: ~Escapable {
                   children: ElementPair(c0, ElementPair(c1, ElementPair(c2, ElementPair(c3, ElementPair(c4, EmptyList()))))))
     }
 
+    /// A overlay of 6 children, first to last.
     @_lifetime(copy c0, copy c1, copy c2, copy c3, copy c4, copy c5)
     public init<C0: Element & ~Escapable, C1: Element & ~Escapable, C2: Element & ~Escapable, C3: Element & ~Escapable, C4: Element & ~Escapable, C5: Element & ~Escapable>(
         alignment: Alignment = .topLeading,
@@ -209,6 +231,7 @@ extension Overlay where Children: ~Escapable {
                   children: ElementPair(c0, ElementPair(c1, ElementPair(c2, ElementPair(c3, ElementPair(c4, ElementPair(c5, EmptyList())))))))
     }
 
+    /// A overlay of 7 children, first to last.
     @_lifetime(copy c0, copy c1, copy c2, copy c3, copy c4, copy c5, copy c6)
     public init<C0: Element & ~Escapable, C1: Element & ~Escapable, C2: Element & ~Escapable, C3: Element & ~Escapable, C4: Element & ~Escapable, C5: Element & ~Escapable, C6: Element & ~Escapable>(
         alignment: Alignment = .topLeading,
@@ -218,6 +241,7 @@ extension Overlay where Children: ~Escapable {
                   children: ElementPair(c0, ElementPair(c1, ElementPair(c2, ElementPair(c3, ElementPair(c4, ElementPair(c5, ElementPair(c6, EmptyList()))))))))
     }
 
+    /// A overlay of 8 children, first to last.
     @_lifetime(copy c0, copy c1, copy c2, copy c3, copy c4, copy c5, copy c6, copy c7)
     public init<C0: Element & ~Escapable, C1: Element & ~Escapable, C2: Element & ~Escapable, C3: Element & ~Escapable, C4: Element & ~Escapable, C5: Element & ~Escapable, C6: Element & ~Escapable, C7: Element & ~Escapable>(
         alignment: Alignment = .topLeading,

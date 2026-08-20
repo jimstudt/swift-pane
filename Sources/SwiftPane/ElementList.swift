@@ -61,10 +61,13 @@ public struct EmptyList: ElementList {
 /// One link in a child list: a head element and the rest of the list.
 public struct ElementPair<Head: Element & ~Escapable,
                           Tail: ElementList & ~Escapable>: ElementList, ~Escapable {
+    /// The first element.
     public var head: Head
+    /// The rest of the list.
     public var tail: Tail
 
     @_lifetime(copy head, copy tail)
+    /// Links `head` onto `tail`.
     public init(_ head: consuming Head, _ tail: consuming Tail) {
         self.head = head
         self.tail = tail
