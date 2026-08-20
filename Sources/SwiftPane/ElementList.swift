@@ -7,6 +7,16 @@
 /// (see ContainerInits.swift). Indexed access recurses down the
 /// chain; every arm statically dispatches, so the "loop" a container
 /// runs over its children flattens out at compile time.
+///
+/// > Why not parameter packs: `Column<each C: Element & ~Escapable>`
+/// > would remove the arity cap and the generated overloads, and the
+/// > mechanics all check out with escapable elements (stored
+/// > `(repeat each C)` tuples, mutation by rebuilding the tuple
+/// > through a `consuming`/return helper, borrowing folds). But Swift
+/// > 6.3 rejects inverse constraints on packs — "cannot suppress
+/// > '~Escapable' on type 'each C'" — and our elements are
+/// > `~Escapable` because ``Label`` borrows its text. Revisit when
+/// > packs learn inverse constraints.
 public protocol ElementList: ~Escapable {
     var count: Int { get }
 
